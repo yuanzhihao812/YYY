@@ -1,0 +1,58 @@
+<input type="text" id="inp1" placeholder="请输入时间戳">
+<button id="to_dt"  onclick="to_date()">转成时间</button>
+<input type="text" id="out1" readonly>
+</br>
+<input type="text" id="inp2" placeholder="请输入时间">
+<button id="to_tm" onclick="to_timestamp()">转成时间戳</button>
+<input type="text" id="out2" readonly>
+</br>
+</br>
+<textarea rows="20" cols="30" id="inp3" placeholder="请输入字符串"></textarea>
+<button id="to_tm" onclick="to_json()">转成json格式</button>
+<textarea rows="20" cols="100" id="out3" readonly ></textarea>
+
+<script>
+	function to_date1(){
+		var inp1 = $("#inp1").val();
+		var unixTimestamp = new Date(inp1 * 1000);
+		var year = unixTimestamp.getFullYear();
+		var month = unixTimestamp.getMonth()+1;
+		var day = unixTimestamp.getDate();
+		var hour = unixTimestamp.getHours();
+		var minute = unixTimestamp.getMinutes();
+		var second = unixTimestamp.getSeconds();
+		$("#out1").val(year+"-" + month + "-" + day +" " +hour +":"+minute+":"+second);
+	}
+
+	function to_timestamp1(){
+		var inp2 = $("#inp2").val();
+		var date_time = new Date(inp2);
+		$("#out2").val(Math.round(date_time.getTime()/1000));
+	}
+	
+	function to_date(){
+		var inp1 = document.getElementById('inp1').value;
+		var unixTimestamp = new Date(inp1 * 1000);
+		var year = unixTimestamp.getFullYear();
+		var month = unixTimestamp.getMonth()+1;
+		var day = unixTimestamp.getDate();
+		var hour = unixTimestamp.getHours();
+		var minute = unixTimestamp.getMinutes();
+		var second = unixTimestamp.getSeconds();
+		document.getElementById('out1').value = year+"-" + month + "-" + day +" " +hour +":"+minute+":"+second;
+		//$("#out1").val(year+"-" + month + "-" + day +" " +hour +":"+minute+":"+second);
+	}
+
+	function to_timestamp(){
+		var inp2 = document.getElementById('inp2').value;
+		var date_time = new Date(inp2);
+		document.getElementById('out2').value = Math.round(date_time.getTime()/1000);
+	}
+	
+	function to_json(){
+		var inp3 = document.getElementById('inp3').value;
+		var json = JSON.parse(inp3);
+		document.getElementById('out3').value = JSON.stringify(json, null, 2);
+	}
+	
+</script>
