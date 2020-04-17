@@ -8,28 +8,11 @@
 </br>
 </br>
 <textarea rows="20" cols="30" id="inp3" placeholder="请输入字符串"></textarea>
-<button id="to_tm" onclick="to_json()">转成json格式</button>
+<button id="to_json" onclick="to_json()">转成json格式</button>
 <textarea rows="20" cols="100" id="out3" readonly ></textarea>
 
 <script>
-	function to_date1(){
-		var inp1 = $("#inp1").val();
-		var unixTimestamp = new Date(inp1 * 1000);
-		var year = unixTimestamp.getFullYear();
-		var month = unixTimestamp.getMonth()+1;
-		var day = unixTimestamp.getDate();
-		var hour = unixTimestamp.getHours();
-		var minute = unixTimestamp.getMinutes();
-		var second = unixTimestamp.getSeconds();
-		$("#out1").val(year+"-" + month + "-" + day +" " +hour +":"+minute+":"+second);
-	}
 
-	function to_timestamp1(){
-		var inp2 = $("#inp2").val();
-		var date_time = new Date(inp2);
-		$("#out2").val(Math.round(date_time.getTime()/1000));
-	}
-	
 	function to_date(){
 		var inp1 = document.getElementById('inp1').value;
 		var unixTimestamp = new Date(inp1 * 1000);
