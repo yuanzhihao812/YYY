@@ -1,0 +1,29 @@
+<textarea rows="20" cols="30" id="inp1" placeholder="请输入JSON字符串"></textarea>
+<button id="to_json" onclick="to_json()">转换一下</button>
+<textarea rows="20" cols="100" id="out1" placeholder="不换行,无空格,单引号" readonly ></textarea>
+<br/><br/>
+<textarea rows="20" cols="30" id="inp2" placeholder="请输入JSON字符串"></textarea>
+<button id="to_json2" onclick="to_json2()">再转换一下</button>
+<textarea rows="20" cols="100" id="out2" placeholder="不换行,无空格,单引号,none->'',true,false首字母大写" readonly ></textarea>
+
+
+<script>
+
+	function to_json(){
+		var inp1 = document.getElementById('inp1').value;
+		var json = JSON.parse(inp1);
+		var json_str = JSON.stringify(json, null, 0);
+		json_str = json_str.replace(/\s/g,"").replace(/\"/g,"'");
+		document.getElementById('out1').value = json_str;
+	}
+	
+	function to_json2(){
+		var inp2 = document.getElementById('inp2').value;
+		inp2 = inp2.replace(/none/g,"null");
+		var json = JSON.parse(inp2);
+		var json_str = JSON.stringify(json, null, 0);
+		json_str = json_str.replace(/\s/g,"").replace(/\"/g,"'").replace(/null/g,"''").replace(/true/g,"True").replace(/false/g,"False");
+		document.getElementById('out2').value = json_str;
+	}
+	
+</script>
